@@ -614,19 +614,6 @@ npm run dev
 | `DB_PASSWORD` | PostgreSQL user password |
 | `DB_PORT` | PostgreSQL port (defaults to `5432`) |
 
----
-
-## 📸 Screenshots & Demo
-
-> *Note: Place your application screenshots in an `assets/screenshots/` folder to display them here.*
-
-| Consumer Storefront & Hero | AI Semantic Search Modal |
-|:---:|:---:|
-| ![Storefront Home Placeholder](https://via.placeholder.com/600x350.png?text=Storefront+Home+Page) | ![AI Search Modal Placeholder](https://via.placeholder.com/600x350.png?text=Gemini+AI+Product+Search) |
-
-| Admin Dashboard Analytics | Cart & Checkout Flow |
-|:---:|:---:|
-| ![Dashboard Stats Placeholder](https://via.placeholder.com/600x350.png?text=Admin+Analytics+Charts) | ![Checkout Placeholder](https://via.placeholder.com/600x350.png?text=Checkout+%26+Payment+Flow) |
 
 ---
 
@@ -675,7 +662,7 @@ npm run dev
 - **GitHub**: [@nawalkant145](https://github.com/nawalkant145)
 - **Repository**: [ShopNexa E-Commerce](https://github.com/nawalkant145/ECOMMERCE-BACKEND-COMPLETE-CODE)
 - **Email**: [nawalcoder@gmail.com](mailto:nawalcoder@gmail.com)
-- **LinkedIn**: [Nawal Kant on LinkedIn](https://www.linkedin.com/in/nawalkant/)
+- **LinkedIn**: [Nawal Kant | LinkedIn](https://www.linkedin.com/in/nawal-kant-30b694281/?isSelfProfile=true)
 
 ---
 
