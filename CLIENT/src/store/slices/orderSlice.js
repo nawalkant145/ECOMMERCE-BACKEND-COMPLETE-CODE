@@ -21,14 +21,12 @@ export const placeOrder = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const res = await axiosInstance.post("/order/new", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
 
       toast.success(res.data.message || "Order placed successfully!");
-      return res.data;
+      return res.data; // includes total_price, order_id, etc.
     } catch (error) {
       toast.error(
         error.response?.data?.message || "Failed to place order, try again."
@@ -38,7 +36,6 @@ export const placeOrder = createAsyncThunk(
   }
 );
 
-
 const orderSlice = createSlice({
   name: "order",
   initialState: {
@@ -47,12 +44,12 @@ const orderSlice = createSlice({
     placingOrder: false,
     finalPrice: null,
     orderStep: 1,
-    paymentIntent: "",
+    currentOrder: null, // new: store full order for Razorpay
   },
   reducers: {
     toggleOrderStep(state) {
-      state.orderStep=1
-;    },
+      state.orderStep = 1;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -69,12 +66,17 @@ const orderSlice = createSlice({
       .addCase(placeOrder.pending, (state) => {
         state.placingOrder = true;
       })
-      .addCase(placeOrder.fulfilled, (state, action) => {
-        state.placingOrder = false;
-        state.finalPrice = action.payload.total_price;
-        state.paymentIntent = action.payload.paymentIntent;
-        state.orderStep = 2;
-      })
+ .addCase(placeOrder.fulfilled, (state, action) => {
+  state.placingOrder = false;
+  state.finalPrice = action.payload.total_price;
+  state.currentOrder = {
+    _id: action.payload.order_id,   // ✅ matches backend
+    total_price: action.payload.total_price,
+  };
+  state.orderStep = 2;
+})
+
+
       .addCase(placeOrder.rejected, (state) => {
         state.placingOrder = false;
       });
@@ -82,4 +84,4 @@ const orderSlice = createSlice({
 });
 
 export default orderSlice.reducer;
-export const{toggleOrderStep} = orderSlice.actions;
+export const { toggleOrderStep } = orderSlice.actions;

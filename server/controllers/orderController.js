@@ -125,11 +125,12 @@ export const placeNewOrder = catchAsyncErrors(async (req, res, next) => {
   }
 
   res.status(200).json({
-    success: true,
-    message: "Order placed successfully. Please proceed to payment.",
-    paymentIntent: paymentResponse.clientSecret,
-    total_price,
-  });
+  success: true,
+  message: "Order placed successfully. Please proceed to payment.",
+  order_id: orderId, // ✅ your UUID from Postgres
+  total_price,
+});
+
 });
 
 export const fetchSingleOrder = catchAsyncErrors(async (req, res, next) => {
